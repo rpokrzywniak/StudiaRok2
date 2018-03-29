@@ -1,0 +1,7 @@
+INSERT INTO rola VALUES(default, 'Admin');
+INSERT INTO rola VALUES(default, 'User');
+
+INSERT INTO konto VALUES(default,1,'admin','admin');
+INSERT INTO konto VALUES(default,2,'user','user');
+INSERT INTO konto VALUES(default,2,'mieciu','mieciu');
+INSERT INTO konto VALUES(default,2,'zenia','zenia');

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<xs:simpleType name="nazwaType">
+  <xs:restriction base="xs:string">
+    <xs:minLength value="3" />
+    <xs:maxLength value="20" />
+    <xs:pattern value="[A-Z]([a-z])+"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="miastoType">
+  <xs:restriction base="xs:string">
+    <xs:minLength value="3" />
+    <xs:maxLength value="20" />
+    <xs:pattern value="[A-Z]([a-z])+"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="nr-telType">
+  <xs:restriction base="xs:string">
+    <xs:pattern value="[0-9][0-9][0-9]-[0-9][0-9][0-9]-[0-9][0-9][0-9]"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="ulicaType">
+  <xs:restriction base="xs:string">
+    <xs:minLength value="3" />
+    <xs:maxLength value="25" />
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="nr-domuType">
+  <xs:restriction base="xs:integer">
+      <xs:minInclusive value="1"/>
+      <xs:maxInclusive value="99"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="idType">
+  <xs:restriction base="xs:string">
+    <xs:minLength value="3" />
+    <xs:maxLength value="6" />
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="nr-mieszkaniaType">
+  <xs:restriction base="xs:integer">
+      <xs:minInclusive value="1"/>
+      <xs:maxInclusive value="99"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="dateType">
+  <xs:restriction base="xs:date">
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="timeType">
+  <xs:restriction base="xs:time">
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="genreType">
+  <xs:restriction base="xs:string">
+  		  <xs:pattern value="Hip-hop|Pop|EDM"/>
+  	</xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="plecType">
+  <xs:restriction base="xs:string">
+  		  <xs:pattern value="k|m"/>
+  	</xs:restriction>
+</xs:simpleType>
+
+
+
+<xs:complexType name="kontaktType">
+  <xs:sequence>
+    <xs:element name="nr-tel" type="nr-telType"/>
+    <xs:element name="ulica" type="ulicaType"/>
+    <xs:element name="nr-domu" type="nr-domuType"/>
+    <xs:element name="nr-mieszkania" type="nr-mieszkaniaType"/>
+    <xs:element name="miasto" type="miastoType"/>
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="osobaType">
+  <xs:sequence>
+    <xs:element name="imie" type="nazwaType"/>
+    <xs:element name="nazwisko" type="nazwaType"/>
+    <xs:element name="id-koncertu" type="idType"/>
+    <xs:element name="kontakt" type="kontaktType" maxOccurs="unbounded"/>
+  </xs:sequence>
+   <xs:attribute name="plec" type="plecType" />
+</xs:complexType>
+
+<xs:complexType name="osobyType">
+  <xs:sequence>
+    <xs:element name="osoba" type="osobaType" maxOccurs="unbounded" />
+  </xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="koncertType">
+  <xs:sequence>
+    <xs:element name="zespol" type="xs:string"/>
+    <xs:element name="genre" type="genreType"/>
+    <xs:element name="miasto" type="miastoType"/>
+    <xs:element name="data" type="dateType"/>
+    <xs:element name="godzina-pocz" type="timeType"/>
+    <xs:element name="godzina-kn" type="timeType"/>
+  </xs:sequence>
+  <xs:attribute name="id" type="idType" />
+</xs:complexType>
+
+<xs:complexType name="koncertyType">
+  <xs:sequence>
+    <xs:element name="koncert" type="koncertType" maxOccurs="unbounded" />
+  </xs:sequence>
+</xs:complexType>
+
+<xs:element name="koncerty" type="koncertyType">
+  <xs:key name="koncertyR">
+    <xs:selector xpath="koncert"/>
+    <xs:field xpath="@id"/>
+  </xs:key>
+ </xs:element>
+ <xs:element name="osoby" type="osobyType">
+  <xs:keyref name="koncertyRef" refer="koncertyR">
+      <xs:selector xpath="osoba"/>
+      <xs:field xpath="id-koncertu"/>
+    </xs:keyref>
+</xs:element>
+</xs:schema>

@@ -1,0 +1,16 @@
+SET DATEFORMAT ymd;
+
+Insert into kawa values ('Tchibo',12.56,1000);
+Insert into kawa values ('Jacobs',16.86,2000);
+Insert into kawa values ('McCafe',14.77,1500);
+Insert into kawa values ('Woseba',11.54,1250);
+
+
+Insert into klient values ('Marek','Kurczak','12345678912','2000-01-02');
+Insert into klient values ('Jolanta','Frankowska','09876543217','1995-03-04');
+
+
+INSERT INTO konto VALUES(1,'admin','admin');
+INSERT INTO konto VALUES(2,'user','user');
+
+INSERT INTO zamowienie VALUES(1,2,20,900,'2017-05-04');

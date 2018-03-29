@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+<koncerty>
+	<koncert idKoncertu="jds1234">
+		<zespol>2 Pac</zespol>
+		<genre>Hip-hop</genre>
+		<miasto>Warszawa</miasto>
+		<data>2017-05-06</data>
+		<godzina-pocz>17:00:00</godzina-pocz>
+		<godzina-kn>22:30:00</godzina-kn>
+	</koncert>
+	<koncert idKoncertu="jds124">
+		<zespol>Biggie smalls</zespol>
+		<genre>Hip-hop</genre>
+		<miasto>Warszawa</miasto>
+		<data>2017-05-07</data>
+		<godzina-pocz>19:00:00</godzina-pocz>
+		<godzina-kn>23:30:00</godzina-kn>
+	</koncert>
+		<koncert idKoncertu="jds125">
+		<zespol>2 chainz</zespol>
+		<genre>Hip-hop</genre>
+		<miasto>Warszawa</miasto>
+		<data>2017-05-08</data>
+		<godzina-pocz>16:00:00</godzina-pocz>
+		<godzina-kn>21:00:00</godzina-kn>
+	</koncert>
+</koncerty>
+<osoby>
+	<osoba plec="k">
+		<imie>Anna</imie>
+		<nazwisko>Milczak</nazwisko>
+		<id-koncertu>jds123</id-koncertu>
+		<zdj>k1.jpg</zdj>
+		<kontakt>
+			<nr-tel>123-456-765</nr-tel>
+			<ulica>wojska polskiego</ulica>
+			<nr-domu>7</nr-domu>
+			<nr-mieszkania>33</nr-mieszkania>
+			<miasto2>Gdansk</miasto2>
+		</kontakt>
+	</osoba>
+	<osoba plec="m">
+		<imie>Andrzej</imie>
+		<nazwisko>Konar</nazwisko>
+		<id-koncertu>jds123</id-koncertu>
+		<zdj>m2.jpg</zdj>
+		<kontakt>
+			<nr-tel>431-456-765</nr-tel>
+			<ulica>słowiańska</ulica>
+			<nr-domu>6</nr-domu>
+			<nr-mieszkania>1</nr-mieszkania>
+			<miasto2>Gdynia</miasto2>
+		</kontakt>
+	</osoba>
+	<osoba plec="m">
+		<imie>Michal</imie>
+		<nazwisko>Nowakowski</nazwisko>
+		<id-koncertu>jds124</id-koncertu>
+		<zdj>m1.png</zdj>
+		<kontakt>
+			<nr-tel>431-456-666</nr-tel>
+			<ulica>armii krajowej</ulica>
+			<nr-domu>4</nr-domu>
+			<nr-mieszkania>9</nr-mieszkania>
+			<miasto2>Warszawa</miasto2>
+		</kontakt>
+	</osoba>
+	<osoba plec="k">
+		<imie>Kamila</imie>
+		<nazwisko>Kowalska</nazwisko>
+		<id-koncertu>jds125</id-koncertu>
+		<zdj>k2.jpg</zdj>
+		<kontakt>
+			<nr-tel>431-999-666</nr-tel>
+			<ulica>długosza</ulica>
+			<nr-domu>1</nr-domu>
+			<nr-mieszkania>22</nr-mieszkania>
+			<miasto2>Slupsk</miasto2>
+		</kontakt>
+	</osoba>
+</osoby>
+
+</root>

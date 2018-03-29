@@ -1,0 +1,62 @@
+CREATE TABLE adres
+(
+idadres INT PRIMARY KEY IDENTITY(1,1),
+ulica VARCHAR(20) NOT NULL,
+nrdomu INT NOT NULL,
+kodpocztowy CHAR(6) NOT NULL,
+miasto VARCHAR(20) NOT NULL,
+kraj VARCHAR(20) NOT NULL
+);
+
+
+CREATE TABLE pracownik
+(
+idpracownik INT PRIMARY KEY IDENTITY(1,1),
+idadres INT FOREIGN KEY REFERENCES adres(idadres),
+imie VARCHAR(20) NOT NULL,
+nazwisko VARCHAR(20) NOT NULL,
+pesel CHAR(11) NOT NULL
+);
+
+CREATE TABLE kodpromocyjny
+(
+idkodpromocyjny INT PRIMARY KEY IDENTITY(1,1),
+kod VARCHAR(20) NOT NULL UNIQUE,
+promocja DECIMAL NOT NULL
+);
+
+CREATE TABLE klient
+(
+idklient INT PRIMARY KEY IDENTITY(1,1),
+idadres INT FOREIGN KEY REFERENCES adres(idadres),
+imie VARCHAR(20) NOT NULL,
+nazwisko VARCHAR(20) NOT NULL,
+pesel CHAR(11) NOT NULL
+);
+
+CREATE TABLE zamowienie
+(
+idzamowienie INT PRIMARY KEY IDENTITY(1,1),
+idklient INT FOREIGN KEY REFERENCES klient(idklient),
+ikodpromocyjny INT FOREIGN KEY REFERENCES kodpromocyjny(idkodpromocyjny),
+data_zam DATE NOT NULL,
+godz_zam TIME NOT NULL
+);
+
+CREATE TABLE kawa
+(
+idkawa INT PRIMARY KEY IDENTITY(1,1),
+nazwa VARCHAR(20) NOT NULL,
+cena MONEY NOT NULL,
+ilosc INT NOT NULL
+);
+
+CREATE TABLE opis_zamowienia
+(
+idopis_zamowienia INT PRIMARY KEY IDENTITY(1,1),
+idkawa INT FOREIGN KEY REFERENCES kawa(idkawa),
+idzamowienie INT FOREIGN KEY REFERENCES zamowienie(idzamowienie),
+idpracownik INT FOREIGN KEY REFERENCES pracownik(idpracownik),
+ilosc INT NOT NULL,
+razem MONEY NOT NULL
+);

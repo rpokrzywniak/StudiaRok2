@@ -1,0 +1,137 @@
+DROP TABLE kawa;
+DROP TABLE klient;
+DROP TABLE konto;
+DROP TABLE zamowienie;
+CREATE
+  TABLE kawa
+  (
+    idkawa NUMERIC (4) IDENTITY(1,1) NOT NULL ,
+    nazwa  VARCHAR (20) NOT NULL ,
+    cena   NUMERIC (4,2) NOT NULL ,
+    stan   NUMERIC (4) NOT NULL
+  )
+  ON "default"
+GO
+ALTER TABLE kawa ADD CONSTRAINT kawa_PK PRIMARY KEY CLUSTERED (idkawa)
+WITH
+  (
+    ALLOW_PAGE_LOCKS = ON ,
+    ALLOW_ROW_LOCKS  = ON
+  )
+  ON "default"
+GO
+ALTER TABLE kawa ADD CONSTRAINT kawa_nazwa_UN UNIQUE NONCLUSTERED (nazwa)
+ON "default"
+GO
+
+CREATE
+  TABLE klient
+  (
+    idklient NUMERIC (4) IDENTITY(1,1) NOT NULL ,
+    imie     VARCHAR (20) NOT NULL ,
+    nazwisko VARCHAR (20) NOT NULL ,
+    pesel NCHAR (11) NOT NULL ,
+    data_ur DATE NOT NULL
+  )
+  ON "default"
+GO
+ALTER TABLE klient ADD CONSTRAINT klient_PK PRIMARY KEY CLUSTERED (idklient)
+WITH
+  (
+    ALLOW_PAGE_LOCKS = ON ,
+    ALLOW_ROW_LOCKS  = ON
+  )
+  ON "default"
+GO
+ALTER TABLE klient ADD CONSTRAINT klient_pesel_UN UNIQUE NONCLUSTERED (pesel)
+ON "default"
+GO
+
+CREATE
+  TABLE konto
+  (
+    klient_idklient NUMERIC (4)  NOT NULL ,
+    login           VARCHAR (20) NOT NULL ,
+    pass            VARCHAR (20) NOT NULL
+  )
+  ON "default"
+GO
+ALTER TABLE konto ADD CONSTRAINT konto_PK PRIMARY KEY CLUSTERED (
+klient_idklient)
+WITH
+  (
+    ALLOW_PAGE_LOCKS = ON ,
+    ALLOW_ROW_LOCKS  = ON
+  )
+  ON "default"
+GO
+ALTER TABLE konto ADD CONSTRAINT konto_login_UN UNIQUE NONCLUSTERED (login)
+ON "default"
+GO
+
+CREATE
+  TABLE zamowienie
+  (
+    idzamowienie    NUMERIC (4) IDENTITY(1,1) NOT NULL ,
+    klient_idklient NUMERIC (4) NOT NULL ,
+    kawa_idkawa     NUMERIC (4) NOT NULL ,
+    ilosc           INTEGER NOT NULL ,
+    razem           NUMERIC (6,2) NOT NULL ,
+    data_zam        DATE NOT NULL
+  )
+  ON "default"
+GO
+ALTER TABLE zamowienie ADD CONSTRAINT zamowienie_PK PRIMARY KEY CLUSTERED (
+idzamowienie)
+WITH
+  (
+    ALLOW_PAGE_LOCKS = ON ,
+    ALLOW_ROW_LOCKS  = ON
+  )
+  ON "default"
+GO
+
+ALTER TABLE konto
+ADD CONSTRAINT konto_klient_FK FOREIGN KEY
+(
+klient_idklient
+)
+REFERENCES klient
+(
+idklient
+)
+ON
+DELETE
+  NO ACTION ON
+UPDATE NO ACTION
+GO
+
+ALTER TABLE zamowienie
+ADD CONSTRAINT zamowienie_kawa_FK FOREIGN KEY
+(
+kawa_idkawa
+)
+REFERENCES kawa
+(
+idkawa
+)
+ON
+DELETE
+  NO ACTION ON
+UPDATE NO ACTION
+GO
+
+ALTER TABLE zamowienie
+ADD CONSTRAINT zamowienie_klient_FK FOREIGN KEY
+(
+klient_idklient
+)
+REFERENCES klient
+(
+idklient
+)
+ON
+DELETE
+  NO ACTION ON
+UPDATE NO ACTION
+GO

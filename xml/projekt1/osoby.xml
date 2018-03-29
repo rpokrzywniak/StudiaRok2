@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<osoby>
+	<osoba plec="k">
+		<imie>Anna</imie>
+		<nazwisko>Milczak</nazwisko>
+		<id-koncertu>jds123</id-koncertu>
+		<kontakt>
+			<nr-tel>123-456-765</nr-tel>
+			<ulica>wojska polskiego</ulica>
+			<nr-domu>7</nr-domu>
+			<nr-mieszkania>33</nr-mieszkania>
+			<miasto>Gdansk</miasto>
+		</kontakt>
+	</osoba>
+	<osoba plec="m">
+		<imie>Andrzej</imie>
+		<nazwisko>Konar</nazwisko>
+		<id-koncertu>jds123</id-koncertu>
+		<kontakt>
+			<nr-tel>431-456-765</nr-tel>
+			<ulica>słowiańska</ulica>
+			<nr-domu>6</nr-domu>
+			<nr-mieszkania>1</nr-mieszkania>
+			<miasto>Gdynia</miasto>
+		</kontakt>
+	</osoba>
+	<osoba plec="m">
+		<imie>Michal</imie>
+		<nazwisko>Nowakowski</nazwisko>
+		<id-koncertu>jds124</id-koncertu>
+		<kontakt>
+			<nr-tel>431-456-666</nr-tel>
+			<ulica>armii krajowej</ulica>
+			<nr-domu>4</nr-domu>
+			<nr-mieszkania>9</nr-mieszkania>
+			<miasto>Warszawa</miasto>
+		</kontakt>
+	</osoba>
+	<osoba plec="k">
+		<imie>Kamila</imie>
+		<nazwisko>Kowalska</nazwisko>
+		<id-koncertu>jds125</id-koncertu>
+		<kontakt>
+			<nr-tel>431-999-666</nr-tel>
+			<ulica>długosza</ulica>
+			<nr-domu>1</nr-domu>
+			<nr-mieszkania>22</nr-mieszkania>
+			<miasto>Slupsk</miasto>
+		</kontakt>
+	</osoba>
+</osoby>
